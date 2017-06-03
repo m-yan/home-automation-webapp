@@ -1,0 +1,15 @@
+.bar-group
+  .bar
+    .row.row--v-align-middle
+      - case type when 'Air'
+        .col-xs-4.col--v-align-middle.row__label
+          | 室温/湿度:
+        .col-xs-4.col--v-align-middle.row__status
+          = temperature + "℃ / " + humidity + "%"
+      - when 'Light'
+        .col-xs-4.col--v-align-middle.row__label
+          | 照度:
+        .col-xs-4.col--v-align-middle.row__status
+          = illuminance + " lux"
+      .col-xs-4.col--v-align-middle.row__action
+        = link_to '取得', renew_info_path(device_id), remote: true, class: 'btn btn-default ajax-link click_on_load'

@@ -1,0 +1,7 @@
+- if operation.operation_detail
+  = link_to operation_detail_path(operation.operation_detail), remote: true, class: "list-group-item low-padding" do
+    = render partial: 'operations/operation_element', locals: {operation: operation}
+
+- else
+  = content_tag :div, class: "list-group-item low-padding" do
+    = render partial: 'operations/operation_element', locals: {operation: operation}

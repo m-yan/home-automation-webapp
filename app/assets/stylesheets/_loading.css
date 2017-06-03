@@ -1,0 +1,14 @@
+.loading {
+  display: none;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  width: 150px;
+  text-align: center;
+  margin: -75px 0 0 -75px;
+  background-color: #fff;
+}
+
+.loading > .panel-body > img {
+  margin: 15px 0;
+}

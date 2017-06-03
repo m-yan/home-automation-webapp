@@ -1,0 +1,62 @@
+.content
+  - if current_user.has_role?('admin')
+    .menu-header マスタデータ管理
+    .row
+      .col-xs-4
+        = link_to houses_path, class: "btn btn-default btn-block menu-btn" do
+          = "Houses"
+      .col-xs-4
+        = link_to users_path, class: "btn btn-default btn-block menu-btn" do
+          = "Users"
+      .col-xs-4
+        = link_to devices_path, class: "btn btn-default btn-block menu-btn" do
+          = "Devices"
+      .col-xs-4
+        = link_to event_types_path, class: "btn btn-default btn-block menu-btn" do
+          = "EventTypes"
+      .col-xs-4
+        = link_to operation_types_path, class: "btn btn-default btn-block menu-btn" do
+          = "OperationTypes"
+
+    .menu-header HGWシミュレータ
+    .row
+      .col-xs-4
+        = link_to hgw_sim_event_generator_path, class: "btn btn-default btn-block menu-btn" do
+          = "宅内イベント生成"
+      .col-xs-4
+        = link_to t_sensor_statuses_path, class: "btn btn-default btn-block menu-btn" do
+          = "温度センサ検知値管理"
+      .col-xs-4
+        = link_to h_sensor_statuses_path, class: "btn btn-default btn-block menu-btn" do
+          = "湿度センサ検知値管理"
+      .col-xs-4
+        = link_to i_sensor_statuses_path, class: "btn btn-default btn-block menu-btn" do
+          = "照度センサ検知値管理"
+
+  - else
+    .menu-header 家電操作
+    .row
+      .col-xs-6.col-sm-4
+        = link_to home_automation_air_path, class: "btn btn-default btn-block menu-btn" do
+          = glyph(:"hand-up", {tag: :span}) << "エアコン"
+      .col-xs-6.col-sm-4
+        = link_to home_automation_tv_path, class: "btn btn-default btn-block menu-btn" do
+          = glyph(:"hand-up", {tag: :span}) << "TV"
+      .col-xs-6.col-sm-4
+        = link_to home_automation_light_path, class: "btn btn-default btn-block menu-btn" do
+          = glyph(:"hand-up", {tag: :span}) << "照明"
+
+    .row
+      .col-xs-12.col-sm-8
+        .menu-header ホームセキュリティ
+        .row
+          .col-xs-6
+            = link_to home_security_path, class: "btn btn-default btn-block menu-btn" do
+              = glyph(:home, {tag: :span}) << "自宅監視設定"
+          .col-xs-6
+            = link_to notifications_path, class: "btn btn-default btn-block menu-btn" do
+              = glyph(:envelope, {tag: :span}) << "通知"
+      .col-xs-6.col-sm-4
+        .menu-header その他
+        = link_to events_path, class: "btn btn-default btn-block menu-btn" do
+          = glyph("list-alt", {tag: :span}) << "ライフログ"

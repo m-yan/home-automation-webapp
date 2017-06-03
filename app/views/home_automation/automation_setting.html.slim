@@ -1,0 +1,28 @@
+.content
+  #sensor-panel.panel.panel-default
+    .panel-heading
+      strong 自動制御対象の部屋一覧
+
+    ul.list-group
+      - if @sensors.present?
+        - @sensors.each do |sensor|
+          li.list-group-item
+            .row.row--v-align-middle
+              .col-xs-3.col--v-align-middle.row__label
+                | 部屋:
+              .col-xs-5.col--v-align-middle.row__status
+                = sensor.location
+              .col-xs-4.col--v-align-middle.row__action
+                = form_tag(home_automation_update_enabled_path, method: :put, remote: true) do
+                  = hidden_field_tag :target_device_id, sensor.id
+                  = hidden_field_tag :event_type_id, @event_type_id
+                  = hidden_field_tag :remote_button_id
+                  = check_box_tag sensor.id.to_s, true, sensor.enabled, class: "sensor-panel__switch", data: { "on-text" => "ON", "off-text" => "OFF", "size" => "small", "handle-width" => "20"}
+      - else
+        li.list-group-item
+          | なし
+
+    .panel-footer.notice
+      |  ※本設定がONの場合、対象の部屋は家電自動制御により、入室時に照明が点灯され、退室時から30分経過後に照明が消灯、かつエアコンがOFFになります。
+
+= render partial: 'partials/notification_modal'

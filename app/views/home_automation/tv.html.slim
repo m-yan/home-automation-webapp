@@ -1,0 +1,69 @@
+.content
+  = form_tag(home_automation_operate_tv_path, method: :post, remote: true, class: 'ajax_form') do
+    = hidden_field_tag :target_device_id, @device.id if @device
+    = hidden_field_tag :event_type_id, @event_type_id
+    = hidden_field_tag :remote_button_id
+
+    .row
+      .col-xs-12.col-sm-6
+        .remote-controller
+          .remote-controller__button
+            = submit_tag 'ON/OFF', data: { "btn-id": 8 }, :class => 'btn remote-btn btn-success', disabled: @device.nil?
+          .remote-controller__button
+            .row
+              .col-xs-6
+                .text-right
+                  h4
+                    | 音量
+                  .btn-group-vertical
+                    = submit_tag '＋', data: { "btn-id": 9 }, :class => 'btn remote-btn btn-vol', disabled: @device.nil?
+                    = submit_tag '－', data: { "btn-id": 10 }, :class => 'btn remote-btn btn-vol', disabled: @device.nil?
+              .col-xs-6
+                .text-left
+                  h4
+                    | 選局
+                  .btn-group-vertical
+                    = submit_tag '∧', data: { "btn-id": 11 }, :class => 'btn remote-btn btn-vol', disabled: @device.nil?
+                    = submit_tag '∨', data: { "btn-id": 12 }, :class => 'btn remote-btn btn-vol', disabled: @device.nil?
+
+      .col-xs-12.col-sm-6
+        .remote-controller
+          .remote-controller__button
+            .row
+              .col-xs-5.text-right
+                = submit_tag '1', data: { "btn-id": 27 }, :class => 'btn remote-btn btn-ch', disabled: @device.nil?
+              .col-xs-2.padding-none
+                = submit_tag '2', data: { "btn-id": 28 }, :class => 'btn remote-btn btn-ch', disabled: @device.nil?
+              .col-xs-5.text-left
+                = submit_tag '3', data: { "btn-id": 29 }, :class => 'btn remote-btn btn-ch', disabled: @device.nil?
+
+          .remote-controller__button
+            .row
+              .col-xs-5.text-right
+                = submit_tag '4', data: { "btn-id": 30 }, :class => 'btn remote-btn btn-ch', disabled: @device.nil?
+              .col-xs-2.padding-none
+                = submit_tag '5', data: { "btn-id": 31 }, :class => 'btn remote-btn btn-ch', disabled: @device.nil?
+              .col-xs-5.text-left
+                = submit_tag '6', data: { "btn-id": 32 }, :class => 'btn remote-btn btn-ch', disabled: @device.nil?
+
+          .remote-controller__button
+            .row
+              .col-xs-5.text-right
+                = submit_tag '7', data: { "btn-id": 33 }, :class => 'btn remote-btn btn-ch', disabled: @device.nil?
+              .col-xs-2.padding-none
+                = submit_tag '8', data: { "btn-id": 34 }, :class => 'btn remote-btn btn-ch', disabled: @device.nil?
+              .col-xs-5.text-left
+                = submit_tag '9', data: { "btn-id": 35 }, :class => 'btn remote-btn btn-ch', disabled: @device.nil?
+
+          .remote-controller__button
+            .row
+              .col-xs-5.text-right
+                = submit_tag '10', data: { "btn-id": 36 }, :class => 'btn remote-btn btn-ch', disabled: @device.nil?
+              .col-xs-2.padding-none
+                = submit_tag '11', data: { "btn-id": 37 }, :class => 'btn remote-btn btn-ch', disabled: @device.nil?
+              .col-xs-5.text-left
+                = submit_tag '12', data: { "btn-id": 38 }, :class => 'btn remote-btn btn-ch', disabled: @device.nil?
+
+    = render partial: 'at_home_switch', locals:  {at_home_flag: @at_home_flag}
+
+= render partial: 'partials/notification_modal'

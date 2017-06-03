@@ -1,0 +1,47 @@
+.row.row--v-align-middle
+  .col-xs-12.col-sm-12.col--v-align-middle
+    .row
+      .col-xs-12.col-sm-4
+        .row
+          .col-xs-3.row__label
+            | 種別:
+          .col-xs-9.row__status
+            - case sensor.type when 'OcSensor'
+              = '開閉センサ'
+            - when 'MSensor'
+              = '人感センサ'
+
+      .col-xs-12.col-sm-4
+        .row
+          .col-xs-3.row__label
+            | 場所:
+          .col-xs-9.row__status
+            = sensor.location
+
+      .col-xs-12.col-sm-4
+        .row
+          .col-xs-3.row__label
+            | 状態:
+          .col-xs-9.row__status
+            - if sensor.type == 'OcSensor'
+              - case sensor.opened when 1
+                .danger 
+                  p 開
+                  .notice 窓（もしくは扉）が開いています。<br>閉じるか、センサをOFFにして下さい。
+              - when 2
+                = '閉'
+            - elsif sensor.type == 'MSensor'
+              - case sensor.detected when 1
+                .danger 人検知有
+              - when 2
+                = '人検知無'
+
+  /.col-xs-4.col-sm-2.row__action.col--v-align-middle
+    - if mode == 1 || (mode == 2 && sensor.type == 'MSensor')
+      = check_box_tag sensor.id.to_s, true, false, class: "sensor-panel__switch", data: { "on-text" => "ON", "off-text" => "OFF", "size" => "small", "handle-width" => "20"}, disabled: true
+
+    - else
+      = form_tag(home_security_update_enabled_path, method: :put, remote: true) do
+        = hidden_field_tag :target_device_id, sensor.id
+        = hidden_field_tag :remote_button_id
+        = check_box_tag sensor.id.to_s, true, sensor.enabled, class: "sensor-panel__switch", data: { "on-text" => "ON", "off-text" => "OFF", "size" => "small", "handle-width" => "20"}

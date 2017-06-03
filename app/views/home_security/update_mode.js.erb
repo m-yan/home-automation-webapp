@@ -1,0 +1,3 @@
+$('#surveillance-mode-panel').html("<%=j render partial: 'surveillance_mode_panel', locals: {mode: @mode, hgw_id: @hgw_id} %>")
+$('#sensor-panel').html("<%=j render partial: 'sensor_panel', locals: {sensors: @sensors, mode: @mode} %>")
+$(".sensor-panel__switch").bootstrapSwitch()

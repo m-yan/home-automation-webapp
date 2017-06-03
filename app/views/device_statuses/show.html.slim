@@ -1,0 +1,34 @@
+- model_class = @type.camelize.constantize
+.content
+  
+  dl.dl-horizontal
+    dt:  strong
+      = model_class.human_attribute_name(:house)
+      | :
+    dd  = @device_status.device.house.name
+    dt:  strong
+      = model_class.human_attribute_name(:device)
+      | :
+    dd  = @device_status.device.name
+  
+    - if @type.camelize == 'TSensorStatus'
+      dt:  strong
+        = model_class.human_attribute_name(:temperature)
+        | :
+      dd  = @device_status.temperature
+    - if @type.camelize == 'HSensorStatus'
+      dt:  strong
+        = model_class.human_attribute_name(:humidity)
+        | :
+      dd  = @device_status.humidity
+    - if @type.camelize == 'ISensorStatus'
+      dt:  strong
+        = model_class.human_attribute_name(:illuminance)
+        | :
+      dd  = @device_status.illuminance
+  
+  .text-center
+    => link_to t('.back', :default => t("helpers.links.back")),
+                  url_for(controller: :device_statuses, action: :index),  :class => 'btn btn-default'
+    => link_to t('.edit', :default => t("helpers.links.edit")),
+                  url_for(controller: :device_statuses, action: :edit, id: @device_status), :class => 'btn btn-default'

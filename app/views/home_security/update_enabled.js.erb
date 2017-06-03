@@ -1,0 +1,2 @@
+$('#sensor_<%= @sensor.id %>').html("<%=j render partial: 'sensor', locals: {sensor: @sensor, mode: @mode} %>")
+$(".sensor-panel__switch").bootstrapSwitch()

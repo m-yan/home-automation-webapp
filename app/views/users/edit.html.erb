@@ -1,0 +1,25 @@
+<div class="content">
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+  <div class="form-inputs">
+    <%= f.input :login_id, required: true, autofocus: true %>
+    <%= f.input :name, required: true  %>
+    <%= f.input :email, required: true  %>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+    <% end %>
+
+    <%= f.input :password, autocomplete: "off", hint: "変更しない場合は空白", required: false %>
+    <%= f.input :password_confirmation, required: false %>
+    <%= f.input :current_password, required: true %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Update", class: 'btn btn-primary' %>
+   <%= link_to "Back", :back, class: 'btn btn-default' %>
+  </div>
+<% end %>
+
+</div>

@@ -1,0 +1,7 @@
+<% flash.first(1).each do |name, msg| %>
+  <div class="alert alert-<%= name == "notice" ? "success" : "danger" %>">   
+    <a class="close" href="#" data-dismiss="alert">×</a>     
+    <%= msg %> 
+  </div>
+<% end %>
+

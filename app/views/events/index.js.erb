@@ -1,0 +1,4 @@
+$("#event-list__body").html("<%=j render @events %>");
+$("#event-list__footer").html("<%=j page_entries_info(@events) %>");
+$(".item-paging").html("<%=j paginate(@events, window: 1, remote: true) %>");
+

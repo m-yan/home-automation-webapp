@@ -1,0 +1,16 @@
+$(document).on 'ready page:load', ->
+  $('#event_house_id').on 'change', (event) ->
+    $('#event_event_type_id').prop('disabled',false)
+    $select =$('#event_device_id')
+    $select.html $('<option>')
+    $select.prop('disabled',true)
+
+  $('#event_event_type_id').on 'change', (event) ->
+    devices_path =  '<%= Rails.application.config.relative_url_root %>/hgw_sim/devices?house_id=' + $('#event_house_id').val() + '&event_type_id=' +  $(this).val() 
+    $.get devices_path, {format: 'json'}, (data) ->
+      $select =$('#event_device_id')
+      $select.prop('disabled',false)
+      $select.html $('<option>')
+      $.each data, ->
+        option = $('<option>').val(this.id).text(this.name)
+        $select.append(option)

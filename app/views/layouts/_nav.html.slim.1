@@ -1,0 +1,40 @@
+= nav_bar fixed: :top, brand: "Hi-res FS", inverse: true, responsive: true do
+  - if user_signed_in?
+    - user_is_admin = current_user.has_role?('admin')
+    - notification_menu = glyph(:envelope, {tag: :span}) << "通知 " 
+    - notification_menu <<= badge @notifications_count
+    = menu_group do
+      - if user_is_admin
+        = drop_down "マスタデータ管理" do
+          = menu_text "User data"
+          = menu_item "Houses", houses_path
+          = menu_item "Users", users_path
+          = menu_item "Devices", devices_path
+          = drop_down_divider
+          = menu_text "System config"
+          = menu_item "EventTypes", event_types_path
+          = menu_item "OperationTypes", operation_types_path
+        = drop_down "HGWシミュレータ" do
+          = menu_item "宅内イベント生成", hgw_sim_event_generator_path
+          = menu_item "温度センサ検知値管理", t_sensor_statuses_path
+          = menu_item "湿度センサ検知値管理", h_sensor_statuses_path
+          = menu_item "照度センサ検知値管理", i_sensor_statuses_path
+      - else
+        = drop_down glyph(:"hand-up", {tag: :span}) << "家電操作" do
+          = menu_item "エアコン", home_automation_air_path
+          = menu_item "TV", home_automation_tv_path
+          = menu_item "照明", home_automation_light_path
+          = menu_item "自動制御", home_automation_automation_setting_path
+        = menu_divider
+        = menu_item glyph(:home, {tag: :span}) << "自宅監視設定", home_security_path
+        = menu_divider
+        = menu_item notification_menu, notifications_path 
+        = menu_divider
+        = menu_item glyph(:music, {tag: :span}) << "ハイレゾ", @hires_url 
+        = menu_divider
+
+    = menu_group pull: :right do
+      = drop_down glyph(:user, {tag: :span}) << current_user.login_id do
+        = menu_item glyph("list-alt", {tag: :span}) << "ライフログ", events_path
+        = menu_item glyph(:cog, {tag: :span}) << "ユーザ設定", edit_user_registration_path
+        = menu_item glyph("log-out", {tag: :span}) << "ログアウト", destroy_user_session_path, method: :delete

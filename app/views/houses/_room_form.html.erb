@@ -1,0 +1,13 @@
+<div class="list-group-item form-group-sm">
+<%= link_to_remove_field("×", f, {}) %>
+<div class="row">
+    <%= f.input :id, as: :hidden %>
+    <div class="col-xs-5 col-sm-2">
+      <%= f.input :floor, label: false, collection: %w(1F  2F 3F B1), prompt: "Floor" %>
+    </div>
+    <div class="col-xs-5 col-sm-4">
+      <%= f.input :facility_type, label: false, collection: %w(living dining entrance kitchen room bathroom toilet), prompt: "Type" %>
+    </div>
+    <div class="col-xs-10 col-sm-4"><%= f.input :note, label: false, placeholder: "Note" %></div>
+</div>
+</div>

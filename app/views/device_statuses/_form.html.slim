@@ -1,0 +1,13 @@
+= simple_form_for @device_status, :html => { :class => 'form-horizontal' } do |f|
+  - if @type.camelize == 'TSensorStatus'
+    = f.input :temperature
+    = error_span(@device_status[:temperature])
+  - if @type.camelize == 'HSensorStatus'
+    = f.input :humidity, collection: 0..100
+    = error_span(@device_status[:humidity])
+  - elsif @type.camelize == 'ISensorStatus'
+    = f.input :illuminance
+    = error_span(@device_status[:illuminance])
+  => f.button :submit, :class => 'btn-primary'
+  = link_to t('.cancel', :default => t("helpers.links.cancel")),
+              url_for(controller: :device_statuses, action: :index), :class => 'btn btn-default'

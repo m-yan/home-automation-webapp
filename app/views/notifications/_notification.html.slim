@@ -1,0 +1,2 @@
+= content_tag :div, id: "row_" << notification.id.to_s do
+  = render partial: 'notification_item', locals: {notification: notification}

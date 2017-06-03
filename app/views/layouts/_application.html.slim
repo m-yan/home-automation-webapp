@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    title
+      | Home Automation
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"
+    script src="https://sdk.push7.jp/v2/p7sdk.js"
+  body.container-fluid
+    javascript:
+      p7.init("c105e2930f6d4efaaadee8d7129d990d");
+    = render 'layouts/nav'
+    = content_tag :div, @page_header || controller.controller_name.camelize, class: "page-header"
+    = render 'layouts/flash_messages'
+    = yield

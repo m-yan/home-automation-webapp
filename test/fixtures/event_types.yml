@@ -1,0 +1,63 @@
+# == Schema Information
+#
+# Table name: event_types
+#
+#  id          :integer          not null, primary key
+#  description :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+event1:
+  id: 1
+  description: リビングに誰かが来ました
+
+event2:
+  id: 2
+  description: リビングに人がいなくなりました
+
+event3:
+  id: 3
+  description: 自宅監視中に監視対象センサが異常を検知しました
+
+event4:
+  id: 4
+  description: 非常ボタンが押されました
+
+event5:
+  id: 5
+  description: エアコンのリモコンが操作されました
+
+event6:
+  id: 6
+  description: TVのリモコンが操作されました
+
+event7:
+  id: 7
+  description: 照明のリモコンが操作されました
+
+event8:
+  id: 8
+  description: 監視設定が変更されました
+
+event9:
+  id: 9
+  description: 家電自動制御設定が変更されました
+
+event10:
+  id: 10
+  description: 外出モードが実行されました
+
+event11:
+  id: 11
+  description: 帰宅モードが実行されました
+
+event12:
+  id: 12
+  description: 起床モードが実行されました
+
+event13:
+  id: 13
+  description: リビング入退室シーン設定が変更されました

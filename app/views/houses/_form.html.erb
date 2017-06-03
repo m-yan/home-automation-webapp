@@ -1,0 +1,24 @@
+<%= simple_form_for @house, :html => { :class => 'form-horizontal' } do |f| %>
+
+  <%= f.input :hgw_id, label: 'Hgw Id', disabled: @house.hgw_id.present? %>
+  <%= error_span(@house[:hgw_id]) %>
+
+  <%= f.input :name %>
+  <%= error_span(@house[:name]) %>
+
+
+  <%= f.input :ip_address %>
+  <%= error_span(@house[:ip_address]) %>
+
+  <%= f.label 'Room layout' %>
+  |<%= link_to_add_field(" add", f, "rooms", {}) %>
+  <div class="list-group">
+    <%= f.simple_fields_for :rooms do |ff| %>
+      <%= render partial: "room_form", locals: { f: ff } %>
+    <% end %>
+  </div>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                houses_path, :class => 'btn btn-default' %>
+<% end %>

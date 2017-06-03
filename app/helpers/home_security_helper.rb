@@ -1,0 +1,2 @@
+module HomeSecurityHelper
+end

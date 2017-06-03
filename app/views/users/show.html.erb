@@ -1,0 +1,28 @@
+<%- model_class = User -%>
+<div class="content">
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:login_id) %>:</strong></dt>
+  <dd><%= @user.login_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @user.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
+  <dd><%= @user.email %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:house_id) %>:</strong></dt>
+  <dd><%= @user.house.name if @user.house %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:created_at) %>:</strong></dt>
+  <dd><%= @user.created_at.strftime("%Y-%m-%d %H:%M:%S") %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:locked_at) %>:</strong></dt>
+  <dd><%= @user.locked_at.strftime("%Y-%m-%d %H:%M:%S") if @user.locked_at %></dd>
+</dl>
+
+<div class="text-center">
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              users_path, :class => 'btn btn-default'  %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              user_path(@user),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
+</div>

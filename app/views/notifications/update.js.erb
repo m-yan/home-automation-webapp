@@ -1,0 +1,2 @@
+$('#row_<%= @notification.id %>').html("<%=j render partial: 'notification_item', locals: {notification: @notification} %>");
+$('span.badge').html("<%= @notifications.present? ? @notifications.count : nil %>")

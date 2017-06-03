@@ -1,0 +1,3 @@
+$('#notification-list__body').html("<%=j render @notifications %>")
+$('#notification-list__footer').html("<%=j page_entries_info(@notifications) %>")
+$('.item-paging').html("<%=j paginate(@notifications, window: 1, remote: true) %>")

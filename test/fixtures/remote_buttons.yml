@@ -1,0 +1,176 @@
+# == Schema Information
+#
+# Table name: remote_buttons
+#
+#  id         :integer          not null, primary key
+#  note       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+1:
+  id: 1 
+  note:
+
+2:
+  id: 2
+  note:
+
+3:
+  id: 3
+  note:
+
+4:
+  id: 4
+  note:
+
+5:
+  id: 5
+  note:
+
+6:
+  id: 6
+  note:
+
+7:
+  id: 7
+  note:
+
+8:
+  id: 8
+  note:
+
+9:
+  id: 9
+  note:
+
+10:
+  id: 10
+  note:
+
+11:
+  id: 11
+  note:
+
+12:
+  id: 12
+  note:
+
+13:
+  id: 13
+  note:
+
+14:
+  id: 14
+  note:
+
+15:
+  id: 15
+  note:
+
+16:
+  id: 16
+  note:
+
+17:
+  id: 17
+  note:
+
+18:
+  id: 18
+  note:
+
+19:
+  id: 19
+  note:
+
+20:
+  id: 20
+  note:
+
+21:
+  id: 21
+  note:
+
+22:
+  id: 22
+  note:
+
+23:
+  id: 23
+  note:
+
+24:
+  id: 24
+  note:
+
+25:
+  id: 25
+  note: エアコン_オンタイマー_相対時刻_30分
+
+26:
+  id: 26
+  note: エアコン_オフタイマー_相対時刻_30分
+
+27:
+  id: 27
+  note: TV_CH1
+
+
+28:
+  id: 28
+  note: TV_CH2
+
+29:
+  id: 29
+  note: TV_CH3
+
+30:
+  id: 30
+  note: TV_CH4
+
+31:
+  id: 31
+  note: TV_CH5
+
+32:
+  id: 32
+  note: TV_CH6
+
+33:
+  id: 33
+  note: TV_CH7
+
+34:
+  id: 34
+  note: TV_CH8
+
+35:
+  id: 35
+  note: TV_CH9
+
+36:
+  id: 36
+  note: TV_CH10
+
+37:
+  id: 37
+  note: TV_CH11
+
+38:
+  id: 38
+  note: TV_CH12
+
+39:
+  id: 39
+  note: エアコン_オンタイマー_相対時刻_60分
+
+40:
+  id: 40
+  note: エアコン_オフタイマー_相対時刻_60分
+
+41:
+  id: 41
+  note: エアコン_温度変更

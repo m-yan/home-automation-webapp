@@ -1,0 +1,21 @@
+.row
+  .col-xs-12.col-sm-6
+    .row.row--margin
+      .col-xs-4.row__label
+        | 操作内容:
+      .col-xs-8.row__text
+        = operation.operation_type_description
+
+  .col-xs-12.col-sm-6
+    .row.row--margin
+      .col-xs-4.row__label
+        | 操作対象:
+      .col-xs-8.row__text
+        = operation.device ? operation.device.name : 'NA'
+
+  .col-xs-12.col-sm-6
+    .row.row--margin
+      .col-xs-4.row__label
+        | 日時:
+      .col-xs-8.row__text
+        = operation.created_at.strftime("%Y-%m-%d %H:%M:%S")

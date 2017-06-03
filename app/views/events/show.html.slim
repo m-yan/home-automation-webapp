@@ -1,0 +1,68 @@
+- model_class = Event
+.content
+
+  .panel.panel-default
+    .panel-heading
+      strong イベント詳細
+
+    .panel-body.low-padding
+      .row
+        .col-xs-12.col-sm-6
+          .row.row--margin
+            .col-xs-4.row__label
+              = model_class.human_attribute_name(:event_type_id)
+              |:
+            .col-xs-8.row__text
+              = @event.event_type_description
+        .col-xs-12.col-sm-6
+          .row.row--margin
+            .col-xs-4.row__label
+              = model_class.human_attribute_name(:house_id)
+              |:
+            .col-xs-8.row__text
+              = @event.house_name
+        .col-xs-12.col-sm-6
+          .row.row--margin
+            .col-xs-4.row__label
+              = model_class.human_attribute_name(:user_id)
+              |:
+            .col-xs-8.row__text
+              = @event.user_login_id.presence || "NA"
+        .col-xs-12.col-sm-6
+          .row.row--margin
+            .col-xs-4.row__label
+              = model_class.human_attribute_name(:device_id)
+              |:
+            .col-xs-8.row__text
+              = @event.device_name.presence || "NA"
+        .col-xs-12.col-sm-6
+          .row.row--margin
+            .col-xs-4.row__label
+              = model_class.human_attribute_name(:occurred_at)
+              |:
+            .col-xs-8.row__text
+              = @event.occurred_at.strftime("%Y-%m-%d %H:%M:%S")
+
+    .panel-footer
+
+  .panel.panel-default
+    .panel-heading
+      strong 操作詳細
+
+    .list-group
+      = render @event.operations
+
+    .panel-footer
+
+  = button_tag '戻る', type: "button", class: "btn btn-default back-btn"
+
+#detail_modal.modal.fade[tabindex="-1"]
+  .modal-dialog.modal-dialog--large
+    .modal-content
+      .modal-header
+        strong
+          | HGWとの通信内容
+        button.close[type="button" data-dismiss="modal"]
+          span
+            | ×
+      .modal-body.operation_detail_modal

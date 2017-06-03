@@ -1,0 +1,10 @@
+.content
+  - if @air_status
+
+    #environmental-info
+      = render partial: 'environmental_info', locals: {type: 'Air', temperature: @temperature, humidity: @humidity, illuminance: nil, device_id: @air_status.device_id}
+
+    #air-control-panel
+      = render partial: 'air_control_panel', locals: {air_status: @air_status, flag: @at_home_flag} 
+
+= render partial: 'partials/notification_modal'

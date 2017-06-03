@@ -1,0 +1,22 @@
+.operation_detail_modal__row
+  strong 
+    | request url:
+  = content_tag :p, operation_detail.uri
+.operation_detail_modal__row
+  strong
+    | method:
+  = content_tag :p, operation_detail.method
+.operation_detail_modal__row
+  strong
+    | request body:
+  pre
+    = operation_detail.request
+.operation_detail_modal__row
+  strong
+    | response status:
+  = content_tag :p, operation_detail.result_status
+.operation_detail_modal__row
+  strong
+    | response body:
+  pre
+    = operation_detail.pre_formatted_response

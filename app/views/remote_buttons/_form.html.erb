@@ -1,0 +1,8 @@
+<%= simple_form_for @remote_button, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :note %>
+  <%= error_span(@remote_button[:note]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                remote_buttons_path, :class => 'btn btn-default' %>
+<% end %>

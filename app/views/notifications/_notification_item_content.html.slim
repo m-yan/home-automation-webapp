@@ -1,0 +1,29 @@
+.row
+  .col-xs-12.col-sm-12
+    - unless notification.read
+      = content_tag :p, notification.message, class: "row__msg"
+    - else
+      = notification.message
+
+  .col-xs-12.col-sm-5
+    .row.row--margin
+      .col-xs-3.row__label
+        | 検知機器:
+      .col-xs-9.row__text
+        = notification.detect_device
+
+  .col-xs-12.col-sm-5
+    .row.row--margin
+      .col-xs-3.row__label
+        | 日時:
+      .col-xs-9.row__text
+        = notification.created_at.strftime("%Y-%m-%d %H:%M:%S")
+
+  .col-xs-12.col-sm-2.row__action
+    = form_for(notification, remote: true) do |f|
+      - unless notification.read
+        = hidden_field_tag 'notification[read]', true
+        = f.submit '既読にする', class: 'btn btn-primary btn-sm'
+      - else
+        = hidden_field_tag 'notification[read]', false
+        = f.submit '未読にする', class: 'btn btn-default btn-sm'

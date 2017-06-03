@@ -1,0 +1,37 @@
+- model_class = Event
+= link_to event_path(event), class: "list-group-item" do
+  .row
+    .col-xs-12.col-sm-7.row__msg
+      = event.event_type_description
+    - if current_user.has_role?('admin')
+      .col-xs-12.col-sm-6
+        .row
+          .col-xs-4.row__label
+            = model_class.human_attribute_name(:house_id)
+            |:
+          .col-xs-8.row__text
+            = event.house_name
+      .col-xs-12.col-sm-6
+        .row
+          .col-xs-4.row__label
+            = model_class.human_attribute_name(:user_id)
+            |:
+          .col-xs-8.row__text
+            = event.user_login_id.presence || "NA"
+      .col-xs-12.col-sm-6
+        .row
+          .col-xs-4.row__label
+            = model_class.human_attribute_name(:device_id)
+            |:
+          .col-xs-8.row__text
+            = event.device_name.presence || "NA"
+      .col-xs-12.col-sm-6
+        .row
+          .col-xs-4.row__label
+            = model_class.human_attribute_name(:occurred_at)
+            |:
+          .col-xs-8.row__text
+            = event.occurred_at.strftime("%Y-%m-%d %H:%M:%S")
+    - else
+      .col-xs-12.col-sm-5
+        = event.occurred_at.strftime("%Y-%m-%d %H:%M:%S")  

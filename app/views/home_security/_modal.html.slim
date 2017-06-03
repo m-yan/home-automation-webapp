@@ -1,0 +1,17 @@
+#mode_modal.modal.fade[tabindex="-1"]
+  .modal-dialog
+    .modal-content
+      .modal-header
+        strong
+          | 監視モード設定
+        button.close[type="button" data-dismiss="modal"]
+          span
+            | ×
+      .modal-body
+        = form_tag(home_security_update_mode_path, method: :put, remote: true) do
+          .form-group
+            = select_tag 'surveillance_mode', options_for_select({ "OFF": 1, "在宅モード": 2, "外出モード": 3}), class: "form-control"
+          = hidden_field_tag :target_device_id, hgw_id
+          = hidden_field_tag :remote_button_id, '16'
+          => submit_tag '設定する', class: "btn btn-primary mode_modal__btn"
+          = button_tag '閉じる', type: "button", class: "btn btn-default", data: { dismiss: "modal"}

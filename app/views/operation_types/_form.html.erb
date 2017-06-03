@@ -1,0 +1,14 @@
+<%= simple_form_for @operation_type, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :description %>
+  <%= error_span(@operation_type[:description]) %>
+  <%= f.input :device_type, collection: DEVICE_TYPES %>
+  <%= error_span(@operation_type[:device_type]) %>
+  <%= f.input :method, collection: [:get,:post] %>
+  <%= error_span(@operation_type[:method]) %>
+  <%= f.input :modules_body %>
+  <%= error_span(@operation_type[:modules_body]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                operation_types_path, :class => 'btn btn-default' %>
+<% end %>

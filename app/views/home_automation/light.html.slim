@@ -1,0 +1,24 @@
+.content
+  .remote-controller
+
+    - if @device.present?
+      #environmental-info
+        = render partial: 'environmental_info', locals: {type: 'Light', temperature: nil, humidity: nil, illuminance: '-', device_id: @device.id}
+  
+
+    = form_tag(home_automation_operate_light_path, method: :post, remote: true, class: 'ajax_form') do
+      = hidden_field_tag :target_device_id, @device.id if @device
+      = hidden_field_tag :event_type_id, @event_type_id
+      = hidden_field_tag :remote_button_id
+
+      .remote-controller__button
+        .row.row--v-align-middle
+          .col-xs-5.col--v-align-middle.row__label[style="text-align: center !important; font-size: 16px !important"]
+            |電源:
+          .col-xs-7.col--v-align-middle.row__action[style="text-align: left !important"]
+            = check_box_tag 'light_power', true, false , class: "light-power__switch", data: { "on-text" => "ON", "on-color" => "success", "off-text" => "OFF", "size" => "normal"}, disabled: @device.nil?
+
+      = render partial: 'at_home_switch', locals:  {at_home_flag: @at_home_flag}
+
+= render partial: 'partials/notification_modal'
+

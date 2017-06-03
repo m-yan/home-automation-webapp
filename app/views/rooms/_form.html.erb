@@ -1,0 +1,10 @@
+<%= simple_form_for @room, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.association :house %>
+  <%= error_span(@room[:house_id]) %>
+  <%= f.input :name %>
+  <%= error_span(@room[:name]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                rooms_path, :class => 'btn btn-default' %>
+<% end %>

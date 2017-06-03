@@ -1,0 +1,151 @@
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://coffeescript.org/
+
+$(document).on 'ready page:load', ->
+  $('.click_on_load').click();
+  $('.ajax_form').on 'ajax:error', (event) ->
+    $("#notification_message").html("<%= FAILURE_MSG %>")
+    $("#notification_modal").modal("show")
+
+  $(document).on 'ajax:error','.ajax-link', (event) ->
+    $("#notification_message").html("情報の取得に失敗しました。<br>再度実施してください。")
+    $("#notification_modal").modal("show")
+    $("#environmental-info").unblock()
+
+  $(document).on 'click', '.remote-btn', (event) ->
+    remote_button_id = $(event.target).data('btn-id')
+    document.getElementById('remote_button_id').value = remote_button_id;
+
+  $(document).on 'click', '.s-mode-btn', (event) ->
+    mode = $(event.target).data('mode')
+    document.getElementById('surveillance_mode').value = mode;
+
+
+  $('#air-control-panel').on 'ajax:error', '.ajax_form', ->
+    $("#notification_message").html("<%= FAILURE_MSG %>")
+    $("#notification_modal").modal("show")
+
+  $('#air-control-panel').on 'click', '[name=on_timer_option]', (event) ->
+    checked = $('input[name=on_timer_option]:checked').val()
+    if checked == "relative"
+      $('.on_timer_modal__btn-relative').prop('disabled',false)
+      $('#air_status_start_time').prop('disabled',true)
+      $('#on_timer_modal__btn-absolute').prop('disabled',true)
+    else if checked == "absolute"
+      $('.on_timer_modal__btn-relative').prop('disabled',true)
+      $('#air_status_start_time').prop('disabled',false)
+      $('#on_timer_modal__btn-absolute').prop('disabled',false)
+
+  $('#air-control-panel').on 'click', '[name=off_timer_option]', (event) ->
+    checked = $('input[name=off_timer_option]:checked').val()
+    checked = $('input[name=off_timer_option]:checked').val()
+    if checked == "relative"
+      $('.off_timer_modal__btn-relative').prop('disabled',false)
+      $('#air_status_stop_time').prop('disabled',true)
+      $('#off_timer_modal__btn-absolute').prop('disabled',true)
+    else if checked == "absolute"
+      $('.off_timer_modal__btn-relative').prop('disabled',true)
+      $('#air_status_stop_time').prop('disabled',false)
+      $('#off_timer_modal__btn-absolute').prop('disabled',false)
+
+  $('#air-control-panel').on 'click', '.timer-modal__form-btn', (event) ->
+    $('#on_timer_modal').modal("hide")
+    $('#off_timer_modal').modal("hide")
+
+  $(".slide-switch").bootstrapSwitch()
+
+
+  $('.mode_modal__btn').on 'click', (event) ->
+    $('#mode_modal').modal("hide")
+
+  $(".sensor-panel__switch").bootstrapSwitch()
+  $("#sensor-panel").on 'switchChange.bootstrapSwitch', '.sensor-panel__switch', (event) ->
+    if $(event.target).prop('checked')
+      remote_button_id = '18'
+    else
+      remote_button_id = '19'  
+    $('input[name=remote_button_id]').val(remote_button_id) 
+    $(event.target).closest('form').submit()
+
+
+  $(".light-power__switch").bootstrapSwitch()
+  $(".light-power__switch").on 'switchChange.bootstrapSwitch', (event) ->
+    if $(event.target).prop('checked')
+      remote_button_id = '13'
+    else
+      remote_button_id = '20'
+    $('input[name=remote_button_id]').val(remote_button_id)
+    $(event.target).closest('form').submit()
+
+  $(".air-power__switch").bootstrapSwitch()
+  $("#air-control-panel").on 'switchChange.bootstrapSwitch', '.air-power__switch',(event) ->
+    if $(event.target).prop('checked')
+      remote_button_id = '1'
+    else
+      remote_button_id = '2'
+    $('input[name=remote_button_id]').val(remote_button_id)
+    $(event.target).closest('form').submit()
+
+
+#  $('.item-list').on 'click', 'li[data-href]', (event) ->
+#    if !$(event.target).is('a')
+#      window.location = $(event.target).closest('li').data('href')
+
+  $('.back-btn').on 'click', (event) ->
+    history.back()  
+
+
+  $('#device_house_id').on 'change', (event) ->
+    rooms_path =  '<%= Rails.application.config.relative_url_root %>/houses/' + $(this).val() + '/rooms'
+    $.get rooms_path, {format: 'json'}, (data) ->
+      $select =$('#device_room_id')
+      $select.prop('disabled',false)
+      $select.html $('<option>')
+      $.each data, ->
+        option = $('<option>').val(this.id).text(this.to_s)
+        $select.append(option)
+
+  $('#device_type').on 'change', (event) ->
+    s = $('#device_type option:selected').text()
+    device_type_id = s.substring( s.indexOf("(")+1, s.indexOf(")") );
+    $('#device_id_at_hgw').val(device_type_id + '01')
+
+  $('form').on 'click', '.add_field', (event) ->
+    time = new Date().getTime()
+    regexp = new RegExp($(this).data('id'), 'g')
+    $(".list-group").append($(this).data('fields').replace(regexp, time))
+    event.preventDefault()
+
+  $('form').on 'click', '.remove_field', (event) ->
+    $(this).prev('input[name*=_destroy]').val('true')
+    $(this).closest('div').hide()
+    event.preventDefault()
+
+
+
+$(document).on 'ajaxSend', (event,xhr,settings) ->
+  if $('.loading').size()
+    if /.*home_automation\/renew_info.*/.test(settings.url)
+      $("#environmental-info").block({ 
+        message: "loading.."
+        css: {
+          border: 'none',
+          width: '100px'
+        }
+        overlayCSS:  {
+          backgroundColor: '#fff', 
+          opacity: 0        
+        }
+      });
+    else
+      $.blockUI({
+        message: $('.loading')
+        css: {
+          border: 'none'
+        }
+      })
+$(document).on 'ajaxComplete', ->
+  if $('.loading').size()
+    $.unblockUI()
+

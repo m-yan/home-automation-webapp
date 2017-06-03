@@ -1,0 +1,8 @@
+.content
+  #surveillance-mode-panel
+    - if @hgw.present?
+      = render partial: 'surveillance_mode_panel', locals: {mode: @hgw.mode, hgw_id: @hgw.id}
+
+  #sensor-panel
+    = render partial: 'sensor_panel', locals: {sensors: @sensors, mode: @hgw.mode}
+ 

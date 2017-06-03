@@ -1,0 +1,14 @@
+#confirm_modal.modal.fade[tabindex="-1"]
+  .modal-dialog
+    .modal-content
+      .modal-header
+        strong
+          |  確認
+        button.close[type="button" data-dismiss="modal"]
+          span
+            | ×
+      .modal-body
+        p リモコンコードを送信します。よろしいですか？
+        br
+        => button_tag '送信する', type: "button", class: "btn btn-primary ajax_submit"
+        = button_tag '閉じる', type: "button", class: "btn btn-default", data: { dismiss: "modal"}

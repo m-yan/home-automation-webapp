@@ -1,0 +1,5 @@
+<% case @device.type when 'Air' %>
+  $("#environmental-info").html("<%=j render partial: 'environmental_info', locals: {type: 'Air', temperature: @temperature, humidity: @humidity, illuminance: nil, device_id: @device.id}%> ")
+<% when 'Light' %>
+  $("#environmental-info").html("<%=j render partial: 'environmental_info', locals: {type: 'Light', temperature: nil, humidity: nil, illuminance: @illuminance, device_id: @device.id}%> ")
+<% end %>

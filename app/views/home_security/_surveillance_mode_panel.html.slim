@@ -1,0 +1,21 @@
+= form_tag(home_security_update_mode_path, method: :put, remote: true) do
+  = hidden_field_tag :target_device_id, hgw_id
+  = hidden_field_tag :remote_button_id, '16'
+  = hidden_field_tag :surveillance_mode, mode
+
+  .row[style="margin-bottom:20px"]
+    .col-xs-4
+      - if mode == 2
+        = submit_tag '在宅モード', class: 'btn btn-lg btn-primary btn-block s-mode-btn', data: { "mode": 2 }
+      - else
+        = submit_tag '在宅モード', class: 'btn btn-lg btn-primary--not-selected btn-block s-mode-btn', data: { "mode": 2 }
+    .col-xs-4
+      - if mode == 3
+        = submit_tag '外出モード', class: 'btn btn-lg btn-primary btn-block s-mode-btn', data: { "mode": 3 }
+      - else
+        = submit_tag '外出モード', class: 'btn btn-lg btn-primary--not-selected btn-block s-mode-btn', data: { "mode": 3 }
+    .col-xs-4
+      - if mode == 1
+        = submit_tag 'OFF', class: 'btn btn-lg btn-primary btn-block s-mode-btn', data: { "mode": 1 }
+      - else
+        = submit_tag 'OFF', class: 'btn btn-lg btn-primary--not-selected btn-block s-mode-btn', data: { "mode": 1 }

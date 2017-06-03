@@ -1,0 +1,12 @@
+.content
+  #event-list.panel.panel-default
+    .panel-heading
+      strong イベント一覧
+    #event-list__body.list-group
+      = render @events
+
+    #event-list__footer.panel-footer
+      = page_entries_info(@events)
+
+  .item-paging
+    = paginate(@events, window: 1, remote: true)

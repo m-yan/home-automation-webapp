@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    title
+      | HR FS
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"
+  body[style="background-color: #555; padding-top: 50px"]
+    .container
+      .sign-in-panel
+        .panel.panel-default
+          .panel-body
+            = render 'layouts/flash_messages'
+            = yield
+            br

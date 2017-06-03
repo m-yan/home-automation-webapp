@@ -1,0 +1,16 @@
+<%= simple_form_for @device, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.association :house %>
+  <%= error_span(@device[:house]) %>
+  <%= f.association :room, label_method: :to_s, collection: @rooms, disabled: @device.id.blank? %>
+  <%= error_span(@device[:room]) %>
+  <%= f.input :type, collection: DEVICE_TYPES %>
+  <%= error_span(@device[:type]) %>
+  <%= f.input :note %>
+  <%= error_span(@device[:note]) %>
+  <%= f.input :id_at_hgw %>
+  <%= error_span(@device[:id_at_hgw]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                devices_path, :class => 'btn btn-default' %>
+<% end %>

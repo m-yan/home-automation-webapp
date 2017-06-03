@@ -1,0 +1,47 @@
+# == Schema Information
+#
+# Table name: rooms
+#
+#  id            :integer          not null, primary key
+#  house_id      :string
+#  floor         :string
+#  facility_type :string
+#  note          :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+# Indexes
+#
+#  index_rooms_on_house_id  (house_id)
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+1-1:
+  id: 1
+  house_id: hgw1 
+  floor: 1F
+  facility_type: living
+  note:
+
+1-2:
+  id: 2
+  house_id: hgw1
+  floor: 1F
+  facility_type: entrance
+  note:
+
+1-3:
+  id: 3
+  house_id: hgw1
+  floor: 2F
+  facility_type: room
+  note: 南西
+
+2-1:
+  id: 4
+  house_id: hgw2
+  floor: 1F
+  facility_type: living
+  note:
+

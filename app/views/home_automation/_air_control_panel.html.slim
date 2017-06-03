@@ -1,0 +1,76 @@
+- air = AirStatusLabel.new(air_status)
+= simple_form_for(air_status, url: home_automation_operate_air_path, method: :post, remote: true, html: { class: "ajax_form"}) do |f|
+  = hidden_field_tag :id, air_status.id
+  = hidden_field_tag :target_device_id, air_status.device_id
+  = hidden_field_tag :remote_button_id
+
+  = render partial: 'on_timer_modal', locals: {f: f, air_status: air_status}
+  = render partial: 'off_timer_modal', locals: {f: f, air_status: air_status}
+
+  .remote-controller[style="margin-bottom: 20px"]
+    .bar-group
+      .bar
+        .row.row--v-align-middle
+          .col-xs-6.col--v-align-middle.row__label[style="font-size: 16px !important"]
+            |電源:
+          .col-xs-6.col--v-align-middle.row__action
+            = check_box_tag 'air_power', true, air.power , class: "air-power__switch", data: { "on-text" => "ON", "on-color" => "success", "off-text" => "OFF", "size" => "normal"}
+
+  .row
+    .col-xs-12.col-sm-6
+      .remote-controller
+        .bar-group.bar-group--divide
+          .bar
+            .row.row--v-align-middle
+              .col-xs-4.col--v-align-middle.row__label
+                | 運転モード：　
+              .col-xs-4.col--v-align-middle.row__status
+                = f.input :mode, label: false, collection: AIR_MODES, selected: air_status.mode
+              .col-xs-4.col--v-align-middle.row__action
+                = submit_tag '変更', data: { "btn-id": 5 }, :class => 'btn remote-btn air-control-panel__btn btn-primary'
+
+          .bar
+            .row.row--v-align-middle
+              .col-xs-4.col--v-align-middle.row__label
+                | 温度(℃)：　
+              .col-xs-4.col--v-align-middle.row__status
+                = f.input :temperature, label: false, collection: 18..31, selected: air_status.temperature.to_i
+              .col-xs-4.col--v-align-middle.row__action
+                = submit_tag '変更', data: { "btn-id": 41 }, :class => 'btn remote-btn air-control-panel__btn btn-primary'
+
+          .bar
+            .row.row--v-align-middle
+              .col-xs-8.col--v-align-middle.row__label
+                | 独自指標：　
+              .col-xs-4.col--v-align-middle.row__action
+                = submit_tag '暑い', data: { "btn-id": 14 }, :class => 'btn remote-btn air-control-panel__btn btn-primary'
+                = submit_tag '寒い', data: { "btn-id": 15 }, :class => 'btn remote-btn air-control-panel__btn btn-primary'
+
+
+    .col-xs-12.col-sm-6
+      .remote-controller
+        .bar-group
+          .bar
+            .row.row--v-align-middle
+              .col-xs-4.col--v-align-middle.row__label
+                | 入タイマー：　
+              .col-xs-4.col--v-align-middle.row__status
+                = air.on_timer_label
+              .col-xs-4.col--v-align-middle.row__action
+                = button_tag '予約', type: 'button', class: 'btn remote-btn btn-primary air-control-panel__btn', 
+                  data: {toggle: 'modal', target: '#on_timer_modal'}
+                = submit_tag '取消', data: { "btn-id": 22 }, :class => 'btn remote-btn air-control-panel__btn btn-default'
+          .bar
+            .row.row--v-align-middle
+              .col-xs-4.col--v-align-middle.row__label
+                | 切タイマー：　
+              .col-xs-4.col--v-align-middle.row__status
+                = air.off_timer_label
+              .col-xs-4.col--v-align-middle.row__action
+                = button_tag '予約', type: 'button', class: 'btn remote-btn btn-primary air-control-panel__btn', 
+                  data: {toggle: 'modal', target: '#off_timer_modal'}
+                = submit_tag '取消', data: { "btn-id": 24 }, :class => 'btn remote-btn air-control-panel__btn btn-default'
+
+    .col-xs-12
+      .remote-controller
+        = render partial: 'at_home_switch', locals:  {at_home_flag: @at_home_flag}

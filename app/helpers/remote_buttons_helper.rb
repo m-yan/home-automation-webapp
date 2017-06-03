@@ -1,0 +1,2 @@
+module RemoteButtonsHelper
+end

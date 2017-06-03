@@ -1,0 +1,41 @@
+#on_timer_modal.modal.fade[tabindex="-1"]
+  .modal-dialog
+    .modal-content
+      .modal-header
+        strong
+          | 入タイマー予約設定
+        button.close[type="button" data-dismiss="modal"]
+          span
+            | ×
+      .modal-body
+        .timer-modal__radio-label
+          = radio_button_tag :on_timer_option, 'relative', air_status.on_timer != 3
+          |  指定時間後に電源ON
+
+        .timer-modal__form
+          .row
+            .col-xs-6
+              = submit_tag '30分後', data: { "btn-id": 25 },
+                class: "btn remote-btn btn-primary btn-block timer-modal__form-btn timer-modal__form-btn--relative on_timer_modal__btn-relative",
+                disabled: air_status.on_timer == 3
+            .col-xs-6
+              = submit_tag '60分後', data: { "btn-id": 39 },
+                class: "btn remote-btn btn-primary btn-block timer-modal__form-btn timer-modal__form-btn--relativei on_timer_modal__btn-relative",
+                disabled: air_status.on_timer == 3
+
+        .timer-modal__radio-label--absolute
+          = radio_button_tag :on_timer_option, 'absolute', air_status.on_timer == 3
+          |  指定時刻に電源ON
+
+        .input-group.timer-modal__form
+          .input-group-addon
+            | 予約時刻
+          = f.input :start_time, as: :time, html5: true, label: false, class: 'form-control', disabled: air_status.on_timer != 3
+          .input-group-btn
+            = submit_tag '予約', data: { "btn-id": 21 }, 
+              class: "btn remote-btn btn-primary timer-modal__form-btn timer-modal__form-btn--absolute", 
+              id: "on_timer_modal__btn-absolute", disabled: air_status.on_timer != 3
+
+      .modal-footer
+        = button_tag '閉じる', type: "button", class: "btn btn-default", data: { dismiss: "modal"}
+  

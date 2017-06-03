@@ -1,0 +1,66 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                  :integer          not null, primary key
+#  login_id            :string
+#  name                :string
+#  email               :string           default(""), not null
+#  encrypted_password  :string           default(""), not null
+#  remember_created_at :datetime
+#  failed_attempts     :integer          default(0), not null
+#  unlock_token        :string
+#  locked_at           :datetime
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  house_id            :string
+#
+# Indexes
+#
+#  index_users_on_email     (email) UNIQUE
+#  index_users_on_house_id  (house_id)
+#  index_users_on_login_id  (login_id) UNIQUE
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+
+admin:
+  id: 1
+  login_id: admin
+  name: 管理者
+  email: admin@example.com
+  encrypted_password: $2a$10$vw9Harhr/CjfJInpgFpMFOt/qNC0o60JNMkOXOpAkrU4Aes0APKdS 
+  remember_created_at: 2015-11-19 02:40:37.448954
+  house_id: 
+
+test:
+  id: 2
+  login_id: test
+  name: テストユーザ
+  email: test@example.com
+  encrypted_password: $2a$10$vw9Harhr/CjfJInpgFpMFOt/qNC0o60JNMkOXOpAkrU4Aes0APKdS
+  remember_created_at: 2015-11-19 02:40:37.448954
+  house_id: hgw1
+
+test2:
+  id: 3
+  login_id: test2
+  name: テストユーザ2
+  email: test2@example.com
+  encrypted_password: $2a$10$sq25owFaTCtCgU8Qvl.kKuf2X1CzdCkfNjPrPblPdzLuAXxtSGsy2
+  remember_created_at: 2015-11-19 02:40:37.448954
+  house_id: hgw1
+
+test3:
+  id: 4
+  login_id: test3
+  name: テストユーザ3
+  email: test3@example.com
+  encrypted_password: $2a$10$sq25owFaTCtCgU8Qvl.kKuf2X1CzdCkfNjPrPblPdzLuAXxtSGsy2
+  remember_created_at: 2015-11-19 02:40:37.448954
+  house_id: hgw2

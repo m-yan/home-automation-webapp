@@ -1,0 +1,9 @@
+#at-home-switch
+  .bar-group
+    .bar
+      .row.row--v-align-middle
+        .col-xs-6.col--v-align-middle.row__label
+          |モード手動切替:
+        .col-xs-6.col--v-align-middle.row__action
+          = check_box_tag "at_home_flag", true, at_home_flag, class: "slide-switch", 
+            data: { "on-text" => "在宅", "off-text" => "外出", "size" => "small"}

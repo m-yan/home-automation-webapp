@@ -1,0 +1,441 @@
+@import "twitter/bootstrap/bootstrap";
+
+// Set the correct sprite paths
+@iconSpritePath: image-url("twitter/bootstrap/glyphicons-halflings.png");
+@iconWhiteSpritePath: image-url("twitter/bootstrap/glyphicons-halflings-white.png");
+
+// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
+@fontAwesomeEotPath: font-url("fontawesome-webfont.eot");
+@fontAwesomeEotPath_iefix: font-url("fontawesome-webfont.eot?#iefix");
+@fontAwesomeWoffPath: font-url("fontawesome-webfont.woff");
+@fontAwesomeTtfPath: font-url("fontawesome-webfont.ttf");
+@fontAwesomeSvgPath: font-url("fontawesome-webfont.svg#fontawesomeregular");
+
+// Font Awesome
+@import "fontawesome/font-awesome";
+
+// Glyphicons
+//@import "twitter/bootstrap/glyphicons.less";
+
+// Your custom LESS stylesheets goes here
+//
+// Since bootstrap was imported above you have access to its mixins which
+// you may use and inherit here
+//
+// If you'd like to override bootstrap's own variables, you can do so here as well
+// See http://twitter.github.com/bootstrap/customize.html#variables for their names and documentation
+//
+// Example:
+// @link-color: #ff0000;
+
+// Overwrite
+
+.alert { 
+  margin-top: 20px;
+}
+
+p {
+  margin: 0;
+}
+
+.pagination {
+  margin-top: 0;
+}
+
+.page-header {
+  margin: 0 -15px 20px -15px;
+  text-align: center;
+  background-color: rgb(0,169,130);
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+}
+
+.form-horizontal .form-group {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.close {
+  margin-right: 5px;
+}
+
+.modal-dialog {
+  top: 150px;
+  text-align: center;
+  margin: 0 auto;
+  width: 300px;
+}
+
+.modal-dialog--large {
+  width: 95%;
+  max-width: 700px;
+  top: 60px;
+}
+
+.modal-header {
+    border-radius: 5px 5px 0px 0px;
+    background-color: #eee;
+}
+
+.modal-footer {
+    padding: 8px 15px; 
+    border-radius: 0px 0px 5px 5px;
+    background-color: #eee;
+    color: #666;    
+}
+
+.table > tbody > tr > td {
+  vertical-align: middle;
+}
+
+.glyphicon {
+  margin-right: 8px;
+}
+
+.navbar-nav .open .dropdown-menu > li > a {
+  line-height: 30px;
+}
+
+
+// Bootstrap Modifier
+.row--v-align-middle {
+  letter-spacing:-0.4em;
+}
+
+.col--v-align-middle {
+  letter-spacing:0;
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+}
+
+.row--margin {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.list-group-item--gray {
+  background-color: #f8f8f8;
+}
+
+.btn-primary--not-selected {
+  color: #696969;
+  background-color: #D3D3D3;
+  border-color: #696969 ;
+}
+
+// Specific
+
+body {
+  padding-top: 50px;
+}
+
+.sign-in-panel {
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.content {
+  max-width: 700px;
+  min-width: 290px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.row__label {
+  text-align: left;
+  font-weight: bold;
+  font-size: 13px;
+  padding: 0 0 0 15px !important;
+  color: #357ebd;
+  margin-top: 2px;
+}
+
+.row__status {
+  font-size: 15px;
+  padding: 0 0 0 5px !important;
+  text-align: left;
+}
+
+.row__text {
+  font-size: 14px;
+  padding: 0 15px 0 5px !important;
+}
+
+.row__action {
+  text-align: right;
+  padding: 0 8px 0 0;
+}
+
+.row__msg {
+  font-weight: bold;
+  color: #357ebd;
+}
+
+.remote-controller {
+  width: 290px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.remote-controller__button {
+  margin: 40px 0;
+}
+
+#at-home-switch {
+  margin-top: 60px;
+  display: none;
+}
+
+#air-control-panel {
+  margin-top: 20px;
+}
+
+.air-control-panel__btn {
+  width: 54px !important;
+  margin-top: 5px;
+}
+
+.air-control-panel__btn:first-child {
+  margin-top: 0px;
+}
+
+.timer-modal__radio-label {
+  text-align: left;
+  margin-bottom: 10px;
+  vertical-align:middle;
+}
+
+.timer-modal__form {
+  margin-left: 10px;
+}
+
+.timer-modal__radio-label--absolute {
+  text-align: left;
+  margin-top: 20px;
+  padding-top: 10px;
+  margin-bottom: 10px;
+  vertical-align:middle;
+  border-top: 1px solid #dddddd;
+}
+
+.bar-group {
+  width: 290px;
+  margin: 0 auto;
+  border-bottom: 1px solid #dddddd;
+}
+
+.bar-group--divide {
+  border-bottom: none;
+}
+
+.bar {
+  padding: 8px 15px;
+  border-top: 1px solid #dddddd;
+}
+
+.notice {
+  font-size: 10px;
+  text-align: left;
+}
+
+.item-list {
+  margin-top: 20px;
+}
+
+.item-paging {
+  text-align: center;
+}
+
+a.list-group-item:after {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  width: 6px;
+  height: 6px;
+  margin: -4px 0 0 0;
+  border-top: solid 2px #aaa;
+  border-right: solid 2px #aaa;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.operation_detail_modal { 
+  text-align: left;
+  font-size : 8px; 
+}
+ 
+.operation_detail_modal__row {
+  border-bottom: 1px solid #dddddd;
+  padding: 5px 0;
+}
+
+
+pre {
+  word-wrap: normal;
+  font-size: 8px;
+  padding: 0px;
+  border: none;
+  background-color: #fff;
+}
+
+@media screen and (min-width : 768px){
+  .operation_detail_modal {
+    font-size : 14px;
+  }
+
+  pre {
+    font-size: 14px;  
+  }
+
+  .bar-group--divide {
+    border-bottom: 1px solid #dddddd;
+  }
+
+}
+
+.low-padding {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.padding-none {
+  padding: 0;
+}
+
+.btn-power {
+  color: white;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+  min-width: 60px !important; 
+}
+
+.btn-vol {
+  color: white;
+  background-color: #428bca;
+  border-color: #357ebd;
+  width: 40px !important;
+}
+
+.btn-ch--ud {
+  color: white;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+  width: 40px !important;
+}
+
+.btn-ch {
+  width: 42px !important;
+  color: white;
+  background-color: #222222;
+}
+
+.btn-power:hover,
+.btn-power:focus,
+.btn-power.focus,
+.btn-power:active,
+.btn-power.active,
+.open > .dropdown-toggle.btn-power {
+  color: #ffffff;
+  background-color: #c9302c;
+  border-color: #ac2925;
+}
+
+.btn-vol:hover,
+.btn-vol:focus,
+.btn-vol.focus,
+.btn-vol:active,
+.btn-vol.active,
+.open > .dropdown-toggle.btn-vol {
+  color: #ffffff;
+  background-color: #3071a9;
+  border-color: #285e8e;
+}
+
+.btn-ch--ud:hover,
+.btn-ch--ud:focus,
+.btn-ch--ud.focus,
+.btn-ch--ud:active,
+.btn-ch--ud.active,
+.open > .dropdown-toggle.btn-ch--ud {
+  color: #ffffff;
+  background-color: #449d44;
+  border-color: #398439;
+}
+
+
+.btn-ch:hover,
+.btn-ch:focus,
+.btn-ch.focus,
+.btn-ch:active,
+.btn-ch.active,
+.open > .dropdown-toggle.btn-ch {
+  color: #ffffff;
+  background-color: #080808;
+  border-color: #269abc;
+}
+
+
+input#air_status_start_time {
+  width: 124px;
+}
+
+input#air_status_stop_time {
+  width: 124px;
+}
+
+.menu-header {
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  margin-bottom: 20px;
+  padding: 5px 15px 5px;
+}
+
+.menu-btn {
+  line-height: 50px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  max-width: 150px;
+  text-align: left;
+  background-color: rgb(128,116,110);
+  color: white;
+}
+
+.danger {
+  color: red;
+  font-weight: bold;
+  
+}
+
+.air_status_temperature,
+.air_status_mode {
+  margin-bottom: 0px !important;
+}
+
+.navbar-inverse {
+  background-color: rgb(66,85,99);
+  border-color: rgb(66,85,99);
+}
+
+.navbar-inverse .navbar-nav>li>a {
+  color: #fff;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #fff;
+}
+
+.btn-primary {
+  background-color: rgb(128,116,110);
+  border-color: rgb(128,116,110);
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: rgb(66,85,99);
+  border-color: rgb(66,85,99);
+}

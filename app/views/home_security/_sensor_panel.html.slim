@@ -1,0 +1,18 @@
+- if @sensors.present?
+  .panel.panel-default
+    .panel-heading
+      .row
+        .col-xs-6 
+          strong 監視対象センサ
+        .col-xs-6.row__action
+          = link_to  home_security_renew_info_path, remote: true, class: 'btn btn-primary btn-sm ajax-link' do
+            = glyph(:refresh, {tag: :span}) << '更新'
+      
+ 
+    ul.list-group
+      - sensors.each do |sensor|
+        = content_tag :li, class: "list-group-item", id: "sensor_" << sensor.id.to_s do
+          = render partial: 'sensor', locals: {sensor: sensor, mode: mode}
+  
+    .panel-footer.notice
+        |  ※人感センサをOFFにするとHome automationの自動制御機能もOFFになります。

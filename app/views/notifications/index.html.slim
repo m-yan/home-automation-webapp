@@ -1,0 +1,20 @@
+- model_class = Notification
+.content
+  .panel.panel-default
+    .panel-heading
+      .row
+        .col-xs-6
+          strong 通知メッセージ一覧
+        .col-xs-6.row__action
+          = button_to '全て既読にする', notifications_mark_all_as_read_path, method: :put, class: 'btn btn-primary btn-sm' if @notifications.present?
+
+    ul#notification-list__body.list-group
+      = render @notifications
+
+    #notification-list__footer.panel-footer
+      = page_entries_info(@notifications)
+
+  .item-paging
+    = paginate(@notifications, window: 1, remote: true)
+
+  = link_to '既読も含めて再表示', notifications_path(include_read: true), remote: true, class: 'btn btn-default'

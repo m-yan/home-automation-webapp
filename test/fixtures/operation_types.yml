@@ -1,0 +1,589 @@
+# == Schema Information
+#
+# Table name: operation_types
+#
+#  id           :integer          not null, primary key
+#  description  :string
+#  device_type  :string
+#  method       :string
+#  modules_body :text
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+# Indexes
+#
+#  index_operation_types_on_device_type  (device_type)
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+ha_air1:
+  id: 1
+  description: エアコンの電源ON
+  device_type: Air
+  method: post
+  modules_body: |-
+    <operationStatus>true</operationStatus>
+        <homeAirConditionerDataPoints>
+          <Data>
+            <operationModeSetting>%{mode}</operationModeSetting>
+            <setTemperatureValue>%{temperature}</setTemperatureValue>
+            <airFlowRateSetting>%{volume}</airFlowRateSetting>
+          </Data>
+        </homeAirConditionerDataPoints>
+
+ha_air2:
+  id: 2
+  description: エアコンの電源OFF
+  device_type: Air
+  method: post
+  modules_body: |-
+    <operationStatus>false</operationStatus>
+
+ha_air3:
+  id: 3
+  description: エアコンの温度変更(＋)
+  device_type: Air
+  method: post
+  modules_body: |-
+    <homeAirConditionerDataPoints>
+          <Data>
+            <operationModeSetting>%{mode}</operationModeSetting>
+            <setTemperatureValue>%{temperature}</setTemperatureValue>
+            <airFlowRateSetting>%{volume}</airFlowRateSetting>
+          </Data>
+        </homeAirConditionerDataPoints>
+
+ha_air4:
+  id: 4
+  description: エアコンの温度変更(－)
+  device_type: Air
+  method: post
+  modules_body: |-
+    <homeAirConditionerDataPoints>
+          <Data>
+            <operationModeSetting>%{mode}</operationModeSetting>
+            <setTemperatureValue>%{temperature}</setTemperatureValue>
+            <airFlowRateSetting>%{volume}</airFlowRateSetting>
+          </Data>
+        </homeAirConditionerDataPoints>
+
+ha_air5:
+  id: 5
+  description: エアコンの運転モード変更
+  device_type: Air
+  method: post
+  modules_body: |-
+    <homeAirConditionerDataPoints>
+          <Data>
+            <operationModeSetting>%{mode}</operationModeSetting>
+            <setTemperatureValue>%{temperature}</setTemperatureValue>
+            <airFlowRateSetting>%{volume}</airFlowRateSetting>
+          </Data>
+        </homeAirConditionerDataPoints>
+
+ha_air6:
+  id: 6
+  description: エアコンの風量変更
+  device_type: Air
+  method: post
+  modules_body: |-
+    <homeAirConditionerDataPoints>
+          <Data>
+            <operationModeSetting>%{mode}</operationModeSetting>
+            <setTemperatureValue>%{temperature}</setTemperatureValue>
+            <airFlowRateSetting>%{volume}</airFlowRateSetting>
+          </Data>
+        </homeAirConditionerDataPoints>
+
+ha_air7:
+  id: 7
+  description: エアコンの風向変更
+  device_type: Air
+  method:
+  modules_body:
+
+ha_air8:
+  id: 8
+  description: エアコンの温度調整(気温－2℃)
+  device_type: Air
+  method: post
+  modules_body: |-
+    <homeAirConditionerDataPoints>
+          <Data>
+            <operationModeSetting>%{mode}</operationModeSetting>
+            <setTemperatureValue>%{temperature}</setTemperatureValue>
+            <airFlowRateSetting>%{volume}</airFlowRateSetting>
+          </Data>
+        </homeAirConditionerDataPoints>
+
+ha_air9:
+  id: 9
+  description: エアコンの温度調整(気温＋2℃)
+  device_type: Air
+  method: post
+  modules_body: |-
+    <homeAirConditionerDataPoints>
+          <Data>
+            <operationModeSetting>%{mode}</operationModeSetting>
+            <setTemperatureValue>%{temperature}</setTemperatureValue>
+            <airFlowRateSetting>%{volume}</airFlowRateSetting>
+          </Data>
+        </homeAirConditionerDataPoints>
+
+ha_air10:
+  id: 10
+  description: エアコンの入タイマー設定
+  device_type: Air
+  method: post
+  modules_body: |-
+    <homeAirConditionerDataPoints>
+          <Data>
+            <operationModeSetting>%{mode}</operationModeSetting>
+            <setTemperatureValue>%{temperature}</setTemperatureValue>
+            <airFlowRateSetting>%{volume}</airFlowRateSetting>
+            <onTimerBasedReservationSetting>3</onTimerBasedReservationSetting>
+            <onTimerSettingTime>%{start_time}</onTimerSettingTime>
+          </Data>
+        </homeAirConditionerDataPoints>
+
+ha_air11:
+  id: 11
+  description: エアコンの切タイマー設定
+  device_type: Air
+  method: post
+  modules_body: |-
+    <homeAirConditionerDataPoints>
+          <Data>
+            <offTimerBasedReservationSetting>3</offTimerBasedReservationSetting>
+            <offTimerSettingTime>%{stop_time}</offTimerSettingTime>
+          </Data>
+        </homeAirConditionerDataPoints>
+
+ha_air12:
+  id: 12
+  description: エアコンの入タイマー取消
+  device_type: Air
+  method: post
+  modules_body: |-
+    <homeAirConditionerDataPoints>
+          <Data>
+            <onTimerBasedReservationSetting>2</onTimerBasedReservationSetting>
+          </Data>
+        </homeAirConditionerDataPoints>
+
+ha_air13:
+  id: 13
+  description: エアコンの切タイマー取消
+  device_type: Air
+  method: post
+  modules_body: |-
+    <homeAirConditionerDataPoints>
+          <Data>
+            <offTimerBasedReservationSetting>2</offTimerBasedReservationSetting>
+          </Data>
+        </homeAirConditionerDataPoints>
+
+
+ha_air14:
+  id: 14
+  description: エアコンの入タイマー設定(30分後)
+  device_type: Air
+  method: post
+  modules_body: |-
+    <homeAirConditionerDataPoints>
+          <Data>
+            <operationModeSetting>%{mode}</operationModeSetting>
+            <setTemperatureValue>%{temperature}</setTemperatureValue>
+            <airFlowRateSetting>%{volume}</airFlowRateSetting>
+            <onTimerBasedReservationSetting>4</onTimerBasedReservationSetting>
+            <onTimerSettingRelativeTime>30</onTimerSettingRelativeTime>
+          </Data>
+        </homeAirConditionerDataPoints>
+
+ha_air15:
+  id: 15
+  description: エアコンの切タイマー設定(30分後)
+  device_type: Air
+  method: post
+  modules_body: |-
+    <homeAirConditionerDataPoints>
+          <Data>
+            <offTimerBasedReservationSetting>4</offTimerBasedReservationSetting>
+            <offTimerSettingRelativeTime>30</offTimerSettingRelativeTime>
+          </Data>
+        </homeAirConditionerDataPoints>
+
+ha_air16:
+  id: 16
+  description: エアコンの入タイマー設定(60分後)
+  device_type: Air
+  method: post
+  modules_body: |-
+    <homeAirConditionerDataPoints>
+          <Data>
+            <operationModeSetting>%{mode}</operationModeSetting>
+            <setTemperatureValue>%{temperature}</setTemperatureValue>
+            <airFlowRateSetting>%{volume}</airFlowRateSetting>
+            <onTimerBasedReservationSetting>4</onTimerBasedReservationSetting>
+            <onTimerSettingRelativeTime>60</onTimerSettingRelativeTime>
+          </Data>
+        </homeAirConditionerDataPoints>
+
+ha_air17:
+  id: 17
+  description: エアコンの切タイマー設定(60分後)
+  device_type: Air
+  method: post
+  modules_body: |-
+    <homeAirConditionerDataPoints>
+          <Data>
+            <offTimerBasedReservationSetting>4</offTimerBasedReservationSetting>
+            <offTimerSettingRelativeTime>60</offTimerSettingRelativeTime>
+          </Data>
+        </homeAirConditionerDataPoints>
+
+ha_air18:
+  id: 18
+  description: エアコンの温度変更
+  device_type: Air
+  method: post
+  modules_body: |-
+    <homeAirConditionerDataPoints>
+          <Data>
+            <operationModeSetting>%{mode}</operationModeSetting>
+            <setTemperatureValue>%{temperature}</setTemperatureValue>
+            <airFlowRateSetting>%{volume}</airFlowRateSetting>
+          </Data>
+        </homeAirConditionerDataPoints>
+
+ha_air19:
+  id: 19
+  description: エアコンの自動最適運転ON
+  device_type: Air
+  method: post
+  modules_body: 
+
+ha_air20:
+  id: 20
+  description: エアコンの自動最適運転OFF
+  device_type: Air
+  method: post
+  modules_body: 
+
+ha_tv1:
+  id: 31
+  description: TVの電源操作
+  device_type: Tv
+  method: post
+  modules_body: |-
+    <televisionDataPoints>
+          <Actions>
+            <togglePower>true</togglePower>
+          </Actions>
+        </televisionDataPoints>
+
+ha_tv2:
+  id: 32
+  description: TVの音量（＋）
+  device_type: Tv
+  method: post
+  modules_body: |-
+    <televisionDataPoints>
+          <Actions>
+            <UpVolume>true</UpVolume>
+          </Actions>
+        </televisionDataPoints>
+
+ha_tv3:
+  id: 33
+  description: TVの音量（－）
+  device_type: Tv
+  method: post
+  modules_body: |-
+    <televisionDataPoints>
+          <Actions>
+            <DownVolume>true</DownVolume>
+          </Actions>
+        </televisionDataPoints>
+
+ha_tv4:
+  id: 34
+  description: TVの選局（∧）
+  device_type: Tv
+  method: post
+  modules_body: |-
+    <televisionDataPoints>
+          <Actions>
+            <UpChannel>true</UpChannel>
+          </Actions>
+        </televisionDataPoints>
+
+ha_tv5:
+  id: 35
+  description: TVの選局（∨）
+  device_type: Tv
+  method: post
+  modules_body: |-
+    <televisionDataPoints>
+          <Actions>
+            <DownChannel>true</DownChannel>
+          </Actions>
+        </televisionDataPoints>
+
+ha_tv6:
+  id: 36
+  description: TVの選局（ 1 ）
+  device_type: Tv
+  method: post
+  modules_body: |-
+    <televisionDataPoints>
+          <Data>
+            <Channel>1</Channel>
+          </Data>
+        </televisionDataPoints>
+
+ha_tv7:
+  id: 37
+  description: TVの選局（ 2 ）
+  device_type: Tv
+  method: post
+  modules_body: |-
+    <televisionDataPoints>
+          <Data>
+            <Channel>2</Channel>
+          </Data>
+        </televisionDataPoints>
+
+ha_tv8:
+  id: 38
+  description: TVの選局（ 3 ）
+  device_type: Tv
+  method: post
+  modules_body: |-
+    <televisionDataPoints>
+          <Data>
+            <Channel>3</Channel>
+          </Data>
+        </televisionDataPoints>
+
+ha_tv9:
+  id: 39
+  description: TVの選局（ 4 ）
+  device_type: Tv
+  method: post
+  modules_body: |-
+    <televisionDataPoints>
+          <Data>
+            <Channel>4</Channel>
+          </Data>
+        </televisionDataPoints>
+
+ha_tv10:
+  id: 40
+  description: TVの選局（ 5 ）
+  device_type: Tv
+  method: post
+  modules_body: |-
+    <televisionDataPoints>
+          <Data>
+            <Channel>5</Channel>
+          </Data>
+        </televisionDataPoints>
+
+ha_tv11:
+  id: 41
+  description: TVの選局（ 6 ）
+  device_type: Tv
+  method: post
+  modules_body: |-
+    <televisionDataPoints>
+          <Data>
+            <Channel>6</Channel>
+          </Data>
+        </televisionDataPoints>
+
+ha_tv12:
+  id: 42
+  description: TVの選局（ 7 ）
+  device_type: Tv
+  method: post
+  modules_body: |-
+    <televisionDataPoints>
+          <Data>
+            <Channel>7</Channel>
+          </Data>
+        </televisionDataPoints>
+
+ha_tv13:
+  id: 43
+  description: TVの選局（ 8 ）
+  device_type: Tv
+  method: post
+  modules_body: |-
+    <televisionDataPoints>
+          <Data>
+            <Channel>8</Channel>
+          </Data>
+        </televisionDataPoints>
+
+ha_tv14:
+  id: 44
+  description: TVの選局（ 9 ）
+  device_type: Tv
+  method: post
+  modules_body: |-
+    <televisionDataPoints>
+          <Data>
+            <Channel>9</Channel>
+          </Data>
+        </televisionDataPoints>
+
+ha_tv15:
+  id: 45
+  description: TVの選局（ 10 ）
+  device_type: Tv
+  method: post
+  modules_body: |-
+    <televisionDataPoints>
+          <Data>
+            <Channel>10</Channel>
+          </Data>
+        </televisionDataPoints>
+
+ha_tv16:
+  id: 46
+  description: 音楽停止
+  device_type: Tv
+  method: post
+  modules_body: |-
+    <televisionDataPoints>
+          <Data>
+            <Channel>11</Channel>
+          </Data>
+        </televisionDataPoints>
+
+ha_tv17:
+  id: 47
+  description: 音楽再生 
+  device_type: Tv
+  method: post
+  modules_body: |-
+    <televisionDataPoints>
+          <Data>
+            <Channel>12</Channel>
+          </Data>
+        </televisionDataPoints>
+
+
+
+ha_light1:
+  id: 61
+  description: 照明の電源操作
+  device_type: Light
+  method: post 
+  modules_body: |-
+    <generalLightingDataPoints>
+          <Actions>
+            <togglePower>true</togglePower>
+          </Actions>
+        </generalLightingDataPoints> 
+
+ha_light2:
+  id: 62
+  description: 照明の電源ON
+  device_type: Light
+  method: post
+  modules_body: |-
+    <operationStatus>true</operationStatus>
+
+ha_light3:
+  id: 63
+  description: 照明の電源OFF
+  device_type: Light
+  method: post
+  modules_body: |-
+    <operationStatus>false</operationStatus>
+
+ha_other1:
+  id: 91
+  description: 現在の温度取得
+  device_type: TSensor
+  method: get
+  modules_body:
+
+ha_other2:
+  id: 92
+  description: 現在の湿度取得
+  device_type: HSensor
+  method: get
+  modules_body:
+
+ha_other3:
+  id: 93
+  description: 現在の照度取得
+  device_type: ISensor
+  method: get
+  modules_body:
+
+
+hs1:
+  id: 101
+  description: 監視モード設定
+  device_type: Hgw
+  method: post
+  modules_body: |-
+    <hgwDataPoints>
+          <Data>
+            <monitoringMode>%{mode}</monitoringMode>
+          </Data>
+        </hgwDataPoints>
+
+hs2:
+  id: 102
+  description: 監視モード解除
+  device_type: Hgw
+  method: post
+  modules_body: |-
+    <hgwDataPoints>
+          <Data>
+            <monitoringMode>1</monitoringMode>
+          </Data>
+        </hgwDataPoints>
+
+hs3:
+  id: 103
+  description: センサー有効化
+  device_type: 
+  method: post
+  modules_body: |-
+    <operationStatus>true</operationStatus>
+
+hs4:
+  id: 104
+  description: センサー無効化
+  device_type:
+  method: post
+  modules_body: |-
+    <operationStatus>false</operationStatus>
+
+hs5:
+  id: 105
+  description: センターへ通知
+  device_type: 
+  method: 
+  modules_body: 
+
+hs6:
+  id: 106
+  description: 対象ユーザにメール送信
+  device_type: 
+  method: 
+  modules_body: 
+
+hs7:
+  id: 107
+  description: サイレン警鐘
+  device_type:
+  method:
+  modules_body:

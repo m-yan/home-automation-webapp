@@ -1,0 +1,47 @@
+<%- model_class = OperationType -%>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:device_type) %></th>
+      <th><%= model_class.human_attribute_name(:method) %></th>
+      <th><%= model_class.human_attribute_name(:request_body) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @operation_types.each do |operation_type| %>
+      <tr>
+        <td><%= operation_type.id %></td>
+        <td><%= operation_type.description %></td>
+        <td><%= DEVICE_TYPES.key(operation_type.device_type) %></td>
+        <td><%= operation_type.method %></td>
+        <td><%= operation_type.request_body.truncate(20) if operation_type.request_body %></td>
+        <td>
+          <%= link_to 'Show', operation_type_path(operation_type), class: 'btn btn-default btn-xs' %>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_operation_type_path(operation_type), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      operation_type_path(operation_type),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+    <tr>
+      <td colspan=6>
+        <%= page_entries_info(@operation_types) %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</table>
+<div class="text-center">
+  <%= paginate(@operation_types) %>
+</div>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_operation_type_path,
+            :class => 'btn btn-primary' %>

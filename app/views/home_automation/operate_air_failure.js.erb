@@ -1,0 +1,6 @@
+$('#air-control-panel').html('<%=j render partial: 'air_control_panel', locals: {air_status: @air_status, flag: @at_home_flag} %>')
+$("#notification_message").html(<%= FAILURE_MSG %>)
+$(".slide-switch").bootstrapSwitch()
+$(".air-power__switch").bootstrapSwitch()
+$("#notification_modal").modal("show")
+

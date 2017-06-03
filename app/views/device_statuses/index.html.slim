@@ -1,0 +1,31 @@
+- model_class = @type.camelize.constantize
+
+table.table.table-striped
+  thead
+    tr
+      th = model_class.human_attribute_name(:house)
+      th = model_class.human_attribute_name(:device)
+      - if @type.camelize == 'TSensorStatus'
+        th = model_class.human_attribute_name(:temperature)
+      - if @type.camelize == 'HSensorStatus'
+        th = model_class.human_attribute_name(:humidity)
+      - elsif @type.camelize == 'ISensorStatus'
+        th = model_class.human_attribute_name(:illuminance)
+      th =t '.actions', :default => t("helpers.actions") 
+
+  tbody
+    - @device_statuses.each do |device_status|
+      tr
+        td = device_status.device.house.name
+        td = device_status.device.name
+        - if @type.camelize == 'TSensorStatus'
+          td = device_status.temperature
+        - if @type.camelize == 'HSensorStatus'
+          td = device_status.humidity
+        - elsif @type.camelize == 'ISensorStatus'
+          td = device_status.illuminance
+        td 
+          => link_to 'Show', device_status, class: 'btn btn-default btn-xs'
+          = link_to t('.edit', :default => t("helpers.links.edit")),
+                      url_for(controller: :device_statuses, action: :edit, id: device_status), :class => 'btn btn-default btn-xs'
+

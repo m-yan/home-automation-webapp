@@ -1,0 +1,38 @@
+<%- model_class = EventType -%>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @event_types.each do |event_type| %>
+      <tr>
+        <td><%= event_type.id %></td>
+        <td><%= event_type.description %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_event_type_path(event_type), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      event_type_path(event_type),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+    <tr>
+      <td colspan=5>
+        <%= page_entries_info(@event_types) %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="text-center">
+  <%= paginate(@event_types) %>
+</div>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_event_type_path,
+            :class => 'btn btn-primary' %>

@@ -1,0 +1,30 @@
+<div class="content">
+
+<%= form_tag(hgw_sim_event_create_path, class: 'form-horizontal') do %>
+  <div class="form-group">
+    <%= label_tag 'event[house_id]', 'House:',class: 'col-sm-3 control-label' %>
+    <div class="col-sm-9">
+      <%= select_tag 'event[house_id]', options_from_collection_for_select(@houses, :id, :name), class: 'form-control', prompt: '選択してください' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag 'event[event_type_id]', 'Event type:',class: 'col-sm-3 control-label' %>
+    <div class="col-sm-9">
+      <%= select_tag 'event[event_type_id]', options_from_collection_for_select(@event_types, :id, :description), class: 'form-control', prompt: '選択してください', disabled: true %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag 'event[device_id]', 'Device:',class: 'col-sm-3 control-label' %>
+    <div class="col-sm-9">
+      <%= select_tag 'event[device_id]', options_for_select({"":""}), class: 'form-control', prompt: '選択してください', disabled: true %>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <%= submit_tag 'イベント生成', class: 'btn btn-primary' %>
+  </div>
+
+<% end %>
+</div>

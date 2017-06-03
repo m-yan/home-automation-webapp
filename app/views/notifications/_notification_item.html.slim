@@ -1,0 +1,6 @@
+- if notification.read
+  = content_tag :li, class: "list-group-item list-group-item--gray", id: "row_" << notification.id.to_s do
+    = render partial: 'notification_item_content', locals: {notification: notification}
+- else
+  = content_tag :li, class: "list-group-item", id: "row_" << notification.id.to_s do
+    = render partial: 'notification_item_content', locals: {notification: notification}

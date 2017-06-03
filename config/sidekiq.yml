@@ -1,0 +1,6 @@
+:concurrency: 25
+:pidfile: /opt/kohaku/tmp/pids/sidekiq.pid
+:logfile: /opt/kohaku/log/sidekiq.log
+:queues:
+  - default
+  - mailers
