@@ -1,5 +1,5 @@
 .row.row--v-align-middle
-  .col-xs-12.col-sm-12.col--v-align-middle
+  .col-xs-8.col-sm-10.col--v-align-middle
     .row
       .col-xs-12.col-sm-4
         .row
@@ -36,12 +36,12 @@
               - when 2
                 = '人検知無'
 
-  /.col-xs-4.col-sm-2.row__action.col--v-align-middle
+  .col-xs-4.col-sm-2.row__action.col--v-align-middle
     - if mode == 1 || (mode == 2 && sensor.type == 'MSensor')
-      = check_box_tag sensor.id.to_s, true, false, class: "sensor-panel__switch", data: { "on-text" => "ON", "off-text" => "OFF", "size" => "small", "handle-width" => "20"}, disabled: true
+      = check_box_tag sensor.id.to_s, true, false, class: "sensor-panel__switch", data: { "on-text" => "ON", "off-text" => "OFF", "size" => "small", "handle-width" => "20", "on-color" => "success"}, disabled: true
 
     - else
       = form_tag(home_security_update_enabled_path, method: :put, remote: true) do
         = hidden_field_tag :target_device_id, sensor.id
         = hidden_field_tag :remote_button_id
-        = check_box_tag sensor.id.to_s, true, sensor.enabled, class: "sensor-panel__switch", data: { "on-text" => "ON", "off-text" => "OFF", "size" => "small", "handle-width" => "20"}
+        = check_box_tag sensor.id.to_s, true, sensor.enabled, class: "sensor-panel__switch", data: { "on-text" => "ON", "off-text" => "OFF", "size" => "small", "handle-width" => "20", "on-color" => "success"}
